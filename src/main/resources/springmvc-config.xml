@@ -17,7 +17,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <!--    视图控制器-->
-    <mvc:view-controller path="/home" view-name="home"/>
+    <mvc:view-controller path="/" view-name="login"/>
     <!--    开启静态资源访问-->
     <mvc:default-servlet-handler/>
     <!--    开启mvc注解-->

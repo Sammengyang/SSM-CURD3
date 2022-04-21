@@ -1,5 +1,9 @@
 package com.zmy.ssm.service;
 
+import com.zmy.ssm.pojo.Emp;
+
+import java.util.List;
+
 /**
  * @author Sam  Email:superdouble@yeah.net
  * @Description
@@ -8,8 +12,8 @@ package com.zmy.ssm.service;
 public interface EmpService {
 
     /**
-     * 获取总人数
+     * 获取所有员工
      * @return
      */
-    Integer getCount();
+    List<Emp> getAllEmp();
 }

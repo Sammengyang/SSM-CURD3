@@ -12,5 +12,9 @@
     <typeAliases>
         <package name="com.zmy.ssm"/>
     </typeAliases>
+    <plugins>
+        <!--        设置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
 
 </configuration>

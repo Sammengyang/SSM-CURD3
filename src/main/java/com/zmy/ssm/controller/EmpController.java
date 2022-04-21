@@ -1,27 +1,42 @@
 package com.zmy.ssm.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.zmy.ssm.pojo.Emp;
 import com.zmy.ssm.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author Sam  Email:superdouble@yeah.net
- * @Description
+ * @Description    处理员工的CURD
  * @create 2022-04-20 22:50
  */
 @Controller
-@RequestMapping("/emp")
 public class EmpController {
 
     @Autowired
     private EmpService empService;
 
-    @GetMapping("/test")
-    public String test1(){
-        Integer count = empService.getCount();
-        System.out.println("count = " + count);
-        return "home";
+    // 引入分页插件
+    @RequestMapping("/emps")
+    public String getEmps(@RequestParam(value = "page",defaultValue = "1")Integer page, Model model){
+
+        // 车讯之前调用，传入页码，以及每页展示数量
+        PageHelper.startPage(page,3);
+        // 后面的查询就是分页查询
+        List<Emp> emps = empService.getAllEmp();
+        // 使用pageInfo包装  查询的数据，和导航页码数量
+        PageInfo pageInfo = new PageInfo(emps,5);
+        model.addAttribute("pageInfo",pageInfo);
+        return "emplist";
     }
+
+
+
 }
