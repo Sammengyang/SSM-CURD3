@@ -9,13 +9,14 @@
 <html>
 <head>
     <title>home</title>
-    <script src="/static/js/jquery-3.6.0.js"></script>
-    <link href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
-    <link href="/static/bootstrap-3.4.1-dist/css/bootstrap-theme.min.css">
-    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <script rel="stylesheet" src="/static/js/jquery-3.6.0.js"></script>
+    <link href="/static/bootstrap3.4.1/css/bootstrap.min.css">
+    <link href="/static/bootstrap3.4.1/css/bootstrap-theme.min.css">
+    <script src="/static/bootstrap3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-    <h1>home</h1>
+    <h1><a href="/emps">SSM-CURD</a></h1>
+    <h1><a href="/list">SSM-CURD-ajax</a></h1>
 </body>
 </html>
