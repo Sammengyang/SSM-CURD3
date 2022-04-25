@@ -1,11 +1,15 @@
 package com.zmy.ssm.controller;
 
 import com.zmy.ssm.pojo.Dept;
+import com.zmy.ssm.pojo.Message;
 import com.zmy.ssm.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author Sam  Email:superdouble@yeah.net
@@ -18,9 +22,16 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
-    @RequestMapping("/insertDept")
+    /**
+     * 获取所有部门信息
+     * @return
+     */
+    @GetMapping("/depts")
     @ResponseBody
-    public int insertDept(){
-        return deptService.insertDept(new Dept(null, "开发部门"));
+    public Message getAllDept(){
+        List<Dept> depts = deptService.getDepts();
+        return Message.success().add("depts",depts);
     }
+
+
 }

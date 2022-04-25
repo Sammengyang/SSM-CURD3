@@ -16,7 +16,8 @@
 
 </head>
 <body>
-    <h1><a href="/emps">SSM-CURD</a></h1>
+    <h1><a href="/emplist">SSM-CURD</a></h1>
     <h1><a href="/list">SSM-CURD-ajax</a></h1>
+    <h1><a href="/login">Login</a></h1>
 </body>
 </html>

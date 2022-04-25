@@ -2,6 +2,8 @@ package com.zmy.ssm.service;
 
 import com.zmy.ssm.pojo.Dept;
 
+import java.util.List;
+
 /**
  * @author Sam  Email:superdouble@yeah.net
  * @Description
@@ -9,7 +11,12 @@ import com.zmy.ssm.pojo.Dept;
  */
 public interface DeptService {
     /**
+     * 获取所有部门
+     * @return
+     */
+    List<Dept> getDepts();
+    /**
      * 插入部门
      */
-    int insertDept(Dept dept);
+//    int insertDept(Dept dept);
 }

@@ -12,36 +12,48 @@
     <%--    引入jQuery--%>
     <script src="/static/js/jquery-3.6.0.js"></script>
     <%--    引入样式--%>
-    <link rel="stylesheet" href="/static/bootstrap3.4.1/css/bootstrap.min.css">
-    <link href="/static/bootstrap3.4.1/css/bootstrap-theme.min.css">
-    <script src="/static/bootstrap3.4.1/js/bootstrap.min.js"></script>
-    <script>
-        $(function (){
-            alert("aaa");
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 </head>
 <body>
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+<div class="htmleaf-container">
+    <div class="wrapper">
+        <div class="container">
+            <h1>Welcome</h1>
+
+            <form class="form" method="post" action="/login">
+                <input type="text" placeholder="empName" value="张三" name="empName">
+                <input type="password" placeholder="eid" value="1" name="eid">
+                <button type="submit" id="login-button">Login</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>
+
+<script src="/static/js/jquery-3.6.0.js" type="text/javascript"></script>
+<script>
+    $('#login-button').click(function (event) {
+        event.preventDefault();
+        var form = $('form').fadeOut(500);
+        $('.wrapper').addClass('form-success');
+        form.submit();
+    });
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#000000">
+    <h1>数据管理系统</h1>
+</div>
 </body>
 </html>

@@ -14,7 +14,11 @@
     </typeAliases>
     <plugins>
         <!--        设置分页插件-->
-        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+<!--            设置分页合理化不能小于1，不能大于最大页数-->
+            <property name="reasonable" value="true"/>
+        </plugin>
     </plugins>
+
 
 </configuration>

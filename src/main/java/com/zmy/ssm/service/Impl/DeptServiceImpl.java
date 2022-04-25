@@ -6,6 +6,8 @@ import com.zmy.ssm.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Sam  Email:superdouble@yeah.net
  * @Description
@@ -17,9 +19,20 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptMapper deptMapper;
 
-
+    /**
+     * 获取所有部门信息
+     * @return
+     */
     @Override
-    public int insertDept(Dept dept) {
-        return deptMapper.insertSelective(dept);
+    public List<Dept> getDepts() {
+        return deptMapper.selectAll();
     }
+
+
+//
+//
+//    @Override
+//    public int insertDept(Dept dept) {
+//        return deptMapper.insertSelective(dept);
+//    }
 }

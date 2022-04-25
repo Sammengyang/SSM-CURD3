@@ -8,6 +8,7 @@
     MyBatis3Simple: 生成基本的CRUD（清新简洁版）
     MyBatis3: 生成带条件的CRUD（奢华尊享版）
     -->
+    <properties resource="classpath:db.properties"></properties>
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!-- 数据库的连接信息 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -33,7 +34,7 @@
         <!-- 逆向分析的表 -->
         <!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName -->
         <!-- domainObjectName属性指定生成出来的实体类的类名 -->
-        <table tableName="t_emp" domainObjectName="Emp"/>
-        <table tableName="t_dept" domainObjectName="Dept"/>
+        <table tableName="emp" domainObjectName="Emp"/>
+        <table tableName="dept" domainObjectName="Dept"/>
     </context>
 </generatorConfiguration>
