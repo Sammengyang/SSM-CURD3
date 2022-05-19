@@ -14,155 +14,6 @@
     <link rel="stylesheet" href="/static/bootstrap3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
     <link href="/static/bootstrap3.4.1/css/bootstrap-theme.min.css">
     <script src="/static/bootstrap3.4.1/js/bootstrap.min.js"></script>
-
-</head>
-<body>
-<!-- 员工添加 Modal -->
-<div class="modal fade" id="emp_add_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">员工添加</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="add_emp_form" method="post">
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">empName</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="empName_add_input" name="empName" onblur="check_add_form()" placeholder="姓名">
-                            <span class="help-block"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Age</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="age_add_input" name="age" placeholder="年龄">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Sex</label>
-                        <div class="col-sm-10">
-                            <input type="radio" id="sexM" name="sex" value="男" checked="checked"> 男
-                            <input type="radio" id="sexG" name="sex" value="女"> 女
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">DeptName</label>
-                        <div class="col-sm-4">
-<%--                            部门提交部门id--%>
-                            <select class="form-control" name="did" id="dept_add_select">
-
-                            </select>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="emp_add_btn">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 员工修改 Modal -->
-<div class="modal fade" id="emp_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="editModal">修改信息</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="edit_emp_form" method="post">
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">empName</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static" id="empName_edit_input"></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Age</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="age_edit_input" name="age" placeholder="年龄">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Sex</label>
-                        <div class="col-sm-10">
-                            <input type="radio" name="sex" value="男"> 男
-                            <input type="radio" name="sex" value="女"> 女
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">DeptName</label>
-                        <div class="col-sm-4">
-                            <%--                            部门提交部门id--%>
-                            <select class="form-control" name="did" id="dept_edit_sclect">
-
-                            </select>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="emp_edit_btn">Update</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <%--        标题--%>
-    <div class="row">
-        <div class="col-md-12">
-            <h1>SSM-CRUD</h1>
-        </div>
-    </div>
-    <%--        按钮--%>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-8">
-            <button class="btn btn-primary" id="emp_add_modal_btn">添加</button>
-            <button class="btn btn-danger" id="del_all_Emp_btn">全部删除</button>
-        </div>
-    </div>
-    <%--        表格数据--%>
-    <div class="row">
-        <table class="table table-hover" id="empsTable">
-            <thead>
-                <tr>
-                    <th>
-                        <input type="checkbox" id="check_all">
-                    </th>
-                    <th>编号</th>
-                    <th>名字</th>
-                    <th>性别</th>
-                    <th>年龄</th>
-                    <th>部门</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-
-        </table>
-    </div>
-    <%--        分页信息--%>
-    <div class="row">
-        <%--            文字信息--%>
-        <div class="col-md-6" id="page_info">
-        </div>
-        <%--            分页条--%>
-        <div class="col-md-6" id="page_nav">
-
-        </div>
-    </div>
-</div>
     <script>
         var totalRecord;
 
@@ -433,12 +284,12 @@
 
             // 发送ajax请求更新员工信息
             $.ajax({
-                 url:"/emp/"+$(this).attr("edit_id"),
-                 type:"POST",
-                 data:$("#edit_emp_form").serialize()+"&_method=put",
-                 success:function (result){
-                     alert(result.msg);
-                 }
+                url:"/emp/"+$(this).attr("edit_id"),
+                type:"POST",
+                data:$("#edit_emp_form").serialize()+"&_method=put",
+                success:function (result){
+                    alert(result.msg);
+                }
             });
             // 跳转到第一页
             to_page(1);
@@ -481,7 +332,6 @@
             var flag = $(".check_item:checked").length==$(".check_item").length;
             $("#check_all").prop("checked",flag);
         });
-
         // 给批量删除按钮添加点击事件
         $("#del_all_Emp_btn").click(function (){
             var names = "";
@@ -497,7 +347,6 @@
                     url:"/deleteEmp/"+names,
                     type:"delete",
                     success:function (){
-
                     }
                 });
             }
@@ -508,5 +357,155 @@
 
 
     </script>
+
+</head>
+<body>
+<!-- 员工添加 Modal -->
+<div class="modal fade" id="emp_add_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">员工添加</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="add_emp_form" method="post">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">empName</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="empName_add_input" name="empName" onblur="check_add_form()" placeholder="姓名">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Age</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="age_add_input" name="age" placeholder="年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Sex</label>
+                        <div class="col-sm-10">
+                            <input type="radio" id="sexM" name="sex" value="男" checked="checked"> 男
+                            <input type="radio" id="sexG" name="sex" value="女"> 女
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">DeptName</label>
+                        <div class="col-sm-4">
+<%--                            部门提交部门id--%>
+                            <select class="form-control" name="did" id="dept_add_select">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="emp_add_btn">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 员工修改 Modal -->
+<div class="modal fade" id="emp_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editModal">修改信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="edit_emp_form" method="post">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">empName</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" id="empName_edit_input"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Age</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="age_edit_input" name="age" placeholder="年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Sex</label>
+                        <div class="col-sm-10">
+                            <input type="radio" name="sex" value="男"> 男
+                            <input type="radio" name="sex" value="女"> 女
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">DeptName</label>
+                        <div class="col-sm-4">
+                            <%--                            部门提交部门id--%>
+                            <select class="form-control" name="did" id="dept_edit_sclect">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="emp_edit_btn">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <%--        标题--%>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>SSM-CRUD</h1>
+        </div>
+    </div>
+    <%--        按钮--%>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+            <button class="btn btn-primary" id="emp_add_modal_btn">添加</button>
+            <button class="btn btn-danger" id="del_all_Emp_btn">全部删除</button>
+        </div>
+    </div>
+    <%--        表格数据--%>
+    <div class="row">
+        <table class="table table-hover" id="empsTable">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="check_all">
+                    </th>
+                    <th>编号</th>
+                    <th>名字</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>部门</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+    </div>
+    <%--        分页信息--%>
+    <div class="row">
+        <%--            文字信息--%>
+        <div class="col-md-6" id="page_info">
+        </div>
+        <%--            分页条--%>
+        <div class="col-md-6" id="page_nav">
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

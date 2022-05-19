@@ -17,6 +17,7 @@
         <!--        排除控制器-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+<!--    <context:component-scan base-package="com.zmy.ssm.service.Impl"></context:component-scan>-->
     <!--======================   数据源   =======================================-->
     <!--    引入外部配置文件-->
     <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
@@ -27,19 +28,53 @@
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
-    <!--======================   整合MyBatis   =======================================-->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!--======================   整合MyBatis Plus  =======================================-->
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <!-- 指定mybatis 全局配置文件的位置 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="dataSource" ref="dataSource"/>
-        <!-- 指定mybatismapper文件的位置 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+        <property name="typeAliasesPackage" value="com.zmy.ssm.pojo"></property>
+<!--        配置插件-->
+<!--        <property name="plugins">-->
+<!--            <array>-->
+<!--                <bean class="com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor">-->
+<!--                    <property name="interceptors">-->
+<!--                        <list>-->
+<!--                            <bean class="com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor"></bean>-->
+<!--                            <bean class="com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor"></bean>-->
+<!--                        </list>-->
+<!--                    </property>-->
+<!--                </bean>-->
+<!--            </array>-->
+<!--        </property>-->
     </bean>
-    <!-- 配置扫描器，将mybatis接口的实现加入到ioc容器中 -->
-    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 扫描所有的dao接口 -->
+<!--    包扫描-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.zmy.ssm.mapper"></property>
     </bean>
+
+
+
+
+
+
+
+
+
+
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        &lt;!&ndash; 指定mybatis 全局配置文件的位置 &ndash;&gt;-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        &lt;!&ndash; 指定mybatismapper文件的位置 &ndash;&gt;-->
+<!--        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>-->
+<!--    </bean>-->
+    <!-- 配置扫描器，将mybatis接口的实现加入到ioc容器中 -->
+<!--    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        &lt;!&ndash; 扫描所有的dao接口 &ndash;&gt;-->
+<!--        <property name="basePackage" value="com.zmy.ssm.mapper"></property>-->
+<!--    </bean>-->
 <!--    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">-->
 <!--        &lt;!&ndash; 扫描所有的dao接口 &ndash;&gt;-->
 <!--        <property name="basePackage" value="com.zmy.ssm.mapper"></property>-->

@@ -25,7 +25,8 @@ public class DeptServiceImpl implements DeptService {
      */
     @Override
     public List<Dept> getDepts() {
-        return deptMapper.selectAll();
+//        return deptMapper.selectAll();
+        return null;
     }
 
 

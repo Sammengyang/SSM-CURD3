@@ -1,15 +1,13 @@
 package com.zmy.ssm.service.Impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mysql.jdbc.Wrapper;
 import com.zmy.ssm.mapper.EmpMapper;
 import com.zmy.ssm.pojo.Emp;
 import com.zmy.ssm.service.EmpService;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -19,7 +17,7 @@ import java.util.List;
  * @create 2022-04-20 22:49
  */
 @Service
-public class EmpServiceImpl implements EmpService {
+public class EmpServiceImpl extends ServiceImpl<EmpMapper,Emp> implements EmpService {
 
     @Autowired
     private EmpMapper empMapper;
@@ -37,7 +35,9 @@ public class EmpServiceImpl implements EmpService {
         Emp emp = new Emp();
         emp.setEmpName(empName);
         emp.setEid(Integer.valueOf(eid));
-        return empMapper.selectOne(emp);
+        List<Emp> emps = empMapper.selectList(null);
+        emps.forEach(System.out::println);
+        return null;
     }
 
     /**
@@ -59,7 +59,7 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public void addEmp(Emp emp) {
-        empMapper.insertSelective(emp);
+//        empMapper.insertSelective(emp);
     }
 
     /**
@@ -70,10 +70,11 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public boolean checkName(String empName) {
-        Example example = new Example(Emp.class);
-        example.createCriteria().andEqualTo("empName", empName);
-        int count = empMapper.selectCountByExample(example);
-        return count == 0;
+//        Example example = new Example(Emp.class);
+//        example.createCriteria().andEqualTo("empName", empName);
+//        int count = empMapper.selectCountByExample(example);
+//        return count == 0;
+        return 1==1;
     }
 
     /**
@@ -83,9 +84,10 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public Emp getEmpByid(Integer eid) {
-        Example example = new Example(Emp.class);
-        example.createCriteria().andEqualTo("eid",eid);
-        return empMapper.selectOneByExample(example);
+//        Example example = new Example(Emp.class);
+//        example.createCriteria().andEqualTo("eid",eid);
+//        return empMapper.selectOneByExample(example);
+        return new Emp();
     }
 
 
@@ -97,9 +99,10 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public Integer delEmpByeid(Integer eid) {
-        Example example = new Example(Emp.class);
-        example.createCriteria().andEqualTo("eid",eid);
-        return empMapper.deleteByExample(example);
+//        Example example = new Example(Emp.class);
+//        example.createCriteria().andEqualTo("eid",eid);
+//        return empMapper.deleteByExample(example);
+        return 1;
     }
 
     /**
@@ -109,17 +112,17 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public void delEmpByExample(List<Integer> list) {
-        Example example = new Example(Emp.class);
-        example.createCriteria().andIn("eid", list);
-        empMapper.deleteByExample(example);
+//        Example example = new Example(Emp.class);
+//        example.createCriteria().andIn("eid", list);
+//        empMapper.deleteByExample(example);
     }
 
     @Override
     public void updateEmp(Integer eid,Emp emp) {
-        Example example = new Example(Emp.class);
-        example.createCriteria()
-                .andEqualTo("eid", emp.getEid());
-        empMapper.updateByExampleSelective(emp, example);
+//        Example example = new Example(Emp.class);
+//        example.createCriteria()
+//                .andEqualTo("eid", emp.getEid());
+//        empMapper.updateByExampleSelective(emp, example);
     }
 
     /**
@@ -128,10 +131,10 @@ public class EmpServiceImpl implements EmpService {
      */
     @Override
     public void delAllEmpByName(String[] names) {
-        List<String> nameList = Arrays.asList(names);
-        Example example = new Example(Emp.class);
-        example.createCriteria().andIn("empName",nameList);
-        empMapper.deleteByExample(example);
+//        List<String> nameList = Arrays.asList(names);
+//        Example example = new Example(Emp.class);
+//        example.createCriteria().andIn("empName",nameList);
+//        empMapper.deleteByExample(example);
     }
 
     // todo 未做，删除修改后当前页面刷新

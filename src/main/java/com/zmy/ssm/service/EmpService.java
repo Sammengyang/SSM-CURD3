@@ -1,5 +1,6 @@
 package com.zmy.ssm.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.zmy.ssm.pojo.Emp;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @Description
  * @create 2022-04-20 22:49
  */
-public interface EmpService {
+public interface EmpService extends IService<Emp>{
 
     /**
      *
